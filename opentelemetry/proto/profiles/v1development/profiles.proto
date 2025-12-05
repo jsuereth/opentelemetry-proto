@@ -173,6 +173,10 @@ message ProfilesDictionary {
   //
   // stack_table[0] must always be zero value (Stack{}) and present.
   repeated Stack stack_table = 7;
+  // Resources referenced by other resources via `parent_resource_index`.
+  //
+  // resource_table[0] must always be zero value (Resource{}) and present.
+  repeated Resource resource_table = 8;
 }
 
 // ProfilesData represents the profiles data that can be stored in persistent storage,

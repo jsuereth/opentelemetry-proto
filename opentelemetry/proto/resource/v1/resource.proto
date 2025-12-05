@@ -42,4 +42,29 @@ message Resource {
   //
   // Status: [Development]
   repeated opentelemetry.proto.common.v1.EntityRef entity_refs = 3;
+
+
+  // Parent resources of the current resource.
+  //
+  // A parent resource is found in the `resource_dictionary` at the
+  // top-level message for a signal, e.g. `ResourceProfiles`.
+  //
+  // A parent resource is an "owner" or "context" for the current resource.
+  // For the purpose of identification or grouping, all attributes on a parent
+  // may be used to group data on the current resource.
+  //
+  // For example, if the current resource is a "process", with attributes
+  // `process.id`, etc. it may have a "parent" resource
+  // that captures the `host` information, like `host.id`, `host.name`.
+  //
+  // A resource is allowed to have more than one parent. For example, a
+  // process may be part of a `service``, but also part of a `host`.
+  //
+  // A parent relationship on a resource implies that same relationship for
+  // every entity in the resource.
+  //
+  // Note: This is only used in the Profiling signal, today.
+  //
+  // Status: [Development]
+  repeated int32 parent_resource_index = 4;
 }
